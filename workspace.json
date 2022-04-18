@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "projects": {
+    "core-models": "libs/core/models",
+    "core-services": "libs/core/services",
+    "front-trt-generator": "apps/front-trt-generator",
+    "front-trt-generator-e2e": "apps/front-trt-generator-e2e"
+  }
+}

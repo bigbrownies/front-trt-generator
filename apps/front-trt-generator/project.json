@@ -1,0 +1,73 @@
+{
+  "root": "apps/front-trt-generator",
+  "sourceRoot": "apps/front-trt-generator/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/front-trt-generator",
+        "index": "apps/front-trt-generator/src/index.html",
+        "baseHref": "/",
+        "main": "apps/front-trt-generator/src/main.tsx",
+        "polyfills": "apps/front-trt-generator/src/polyfills.ts",
+        "tsConfig": "apps/front-trt-generator/tsconfig.app.json",
+        "assets": [
+          "apps/front-trt-generator/src/favicon.ico",
+          "apps/front-trt-generator/src/assets"
+        ],
+        "styles": ["apps/front-trt-generator/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/front-trt-generator/src/environments/environment.ts",
+              "with": "apps/front-trt-generator/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "front-trt-generator:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "front-trt-generator:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/front-trt-generator/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/front-trt-generator"],
+      "options": {
+        "jestConfig": "apps/front-trt-generator/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
